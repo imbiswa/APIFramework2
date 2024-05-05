@@ -15,11 +15,12 @@ import io.restassured.specification.RequestSpecification;
 
 public class Utils {
 	
-	RequestSpecification req;
+	public static RequestSpecification req;
 	
 	public RequestSpecification requestSpecification() throws IOException
 	{
-		
+		if(req==null)
+		{
 		PrintStream log = new PrintStream(new FileOutputStream("logging.txt"));//fileoutput stream will create one .txt file
 		 req =new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl")).addQueryParam("key", "qaclick123")
 				 .addFilter(RequestLoggingFilter.logRequestTo(log ))
@@ -28,6 +29,8 @@ public class Utils {
 		 
 		 return req;
 	}	
+		return req;
+	}
 	
 	
 	
