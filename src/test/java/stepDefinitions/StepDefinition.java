@@ -27,7 +27,7 @@ public class StepDefinition extends Utils{
 	ResponseSpecification resspec;
 	Response response;
 	TestDataBuild data = new TestDataBuild();
-	//String place_id;
+	static String place_id;
 	//JsonPath js;
 	
 	@Given(": Add place payload with {string} {string} {string}")
@@ -94,7 +94,14 @@ public class StepDefinition extends Utils{
 	   assertEquals(actualname,expectedname);
 	}
  
-
+	
+	@Given(": DeletePlace payload")
+	public void delete_place_payload() throws IOException
+	{
+		res=given().spec(requestSpecification()).body(data.deletePlacePayload(place_id));
+		
+		
+	}
 
 
 }
